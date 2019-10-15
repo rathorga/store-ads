@@ -1,0 +1,43 @@
+<!--
+ Copyright (c) 2016, the Dart project authors.  Please see the AUTHORS file
+ for details. All rights reserved. Use of this source code is governed by a
+ BSD-style license that can be found in the LICENSE file.
+-->
+<material-drawer temporary #drawer="drawer"
+                 [class.custom-width]="customWidth"
+                 [attr.end]="end ? '' : null"
+                 [attr.overlay]="overlay ? '' : null">
+    <div *deferredContent>
+        Here is some drawer content.
+    </div>
+</material-drawer>
+<div class="material-content">
+    <header class="material-header shadow">
+        <div class="material-header-row">
+            <material-button class="material-drawer-button" icon (trigger)="drawer.toggle()">
+                <material-icon icon="menu"></material-icon>
+            </material-button>
+            <span class="material-header-title">Mobile Layout</span>
+            <div class="material-spacer"></div>
+            <nav class="material-navigation">
+                <a>Link 1</a>
+            </nav>
+            <nav class="material-navigation">
+                <a>Link 2</a>
+            </nav>
+            <nav class="material-navigation">
+                <a>Link 3</a>
+            </nav>
+        </div>
+    </header>
+    <div>
+        <h1>Angular Router</h1>
+        <nav>
+            <a [routerLink]="RoutePaths.device.toUrl()"
+               [routerLinkActive]="'active-route'">Device</a>
+            <a [routerLink]="RoutePaths.admin.toUrl()"
+               [routerLinkActive]="'active-route'">Admin</a>
+        </nav>
+        <router-outlet [routes]="Routes.all"></router-outlet>
+    </div>
+</div>
