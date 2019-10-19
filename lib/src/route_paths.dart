@@ -1,6 +1,7 @@
 import 'package:angular_router/angular_router.dart';
 
 class RoutePaths {
-  static final device = RoutePath(path: 'device');
-  static final admin = RoutePath(path: 'admin');
+  static final store = RoutePath(path: '/store');
+  static final admin = RoutePath(path: '/admin');
+  static final setup = RoutePath(path: 'setup/:play_plan_id');
 }

@@ -1,0 +1,1 @@
+const String PLAY_PLAN_LOCAL_STORAGE_KEY = 'media_play_plan_id';

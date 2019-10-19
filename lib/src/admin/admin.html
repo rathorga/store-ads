@@ -1,8 +1,3 @@
-<!--
- Copyright (c) 2016, the Dart project authors.  Please see the AUTHORS file
- for details. All rights reserved. Use of this source code is governed by a
- BSD-style license that can be found in the LICENSE file.
--->
 <material-drawer temporary #drawer="drawer"
                  [class.custom-width]="customWidth"
                  [attr.end]="end ? '' : null"
@@ -30,14 +25,17 @@
             </nav>
         </div>
     </header>
-    <div>
-        <h1>Angular Router</h1>
-        <nav>
-            <a [routerLink]="RoutePaths.device.toUrl()"
-               [routerLinkActive]="'active-route'">Device</a>
-            <a [routerLink]="RoutePaths.admin.toUrl()"
-               [routerLinkActive]="'active-route'">Admin</a>
-        </nav>
-        <router-outlet [routes]="Routes.all"></router-outlet>
+</div>
+
+<div style="width: 70%;margin: 0 auto;margin-top: 6%;">
+    <div class="demo-card__primary">
+        <h2 class="demo-card__title">Store admin</h2>
+        <h3 class="demo-card__subtitle">Please enter admin details</h3>
+    </div>
+    <div style="display: flex; flex-direction: column;">
+        <material-input style="width: 25%;" label="Store" type="text"></material-input>
+        <material-input style="width: 25%;" label="Location" type="text"></material-input>
+        <material-input style="width: 25%;" label="City" type="text"></material-input>
     </div>
 </div>
+

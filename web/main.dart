@@ -4,7 +4,7 @@ import 'package:angular_app/app_component.template.dart' as ng;
 import 'main.template.dart' as self;
 
 const useHashLS = false;
-@GenerateInjector([routerProviders])
+@GenerateInjector([routerProvidersHash])
 final InjectorFactory injector = self.injector$Injector;
 
 void main() {

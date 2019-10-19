@@ -1,22 +1,30 @@
 import 'package:angular_router/angular_router.dart';
 
-import 'crisis_list_component.template.dart' as crisis_list_template;
-import 'hero_list_component.template.dart' as hero_list_template;
+import 'store/store_component.template.dart' as store_template;
+import 'admin/admin_component.template.dart' as admin_template;
+import 'setup/setup_component.template.dart' as setup_template;
 import 'route_paths.dart';
 
 class Routes {
-  static final device = RouteDefinition(
-    routePath: RoutePaths.device,
-    component: crisis_list_template.CrisisListComponentNgFactory,
+  static final store = RouteDefinition(
+    routePath: RoutePaths.store,
+    component: store_template.StoreComponentNgFactory,
+    useAsDefault: true,
   );
 
   static final admin = RouteDefinition(
     routePath: RoutePaths.admin,
-    component: hero_list_template.HeroListComponentNgFactory,
+    component: admin_template.AdminComponentNgFactory,
+  );
+
+  static final setup = RouteDefinition(
+    routePath: RoutePaths.setup,
+    component: setup_template.SetupComponentNgFactory,
   );
 
   static final all = <RouteDefinition>[
-    device,
+    store,
     admin,
+    setup,
   ];
 }
