@@ -1,18 +1,3 @@
-<!--
- Copyright (c) 2016, the Dart project authors.  Please see the AUTHORS file
- for details. All rights reserved. Use of this source code is governed by a
- BSD-style license that can be found in the LICENSE file.
--->
-
-<div>
-    <nav>
-        <a [routerLink]="RoutePaths.store.toUrl()"
-           [routerLinkActive]="'active-route'">store</a>
-        <a [routerLink]="RoutePaths.admin.toUrl()"
-           [routerLinkActive]="'active-route'">Admin</a>
-        <a [routerLink]="RoutePaths.setup.toUrl()"
-           [routerLinkActive]="'active-route'">Setup</a>
-    </nav>
+<div class="main">
+  <router-outlet [routes]="Routes.all"></router-outlet>
 </div>
-
-<router-outlet [routes]="Routes.all"></router-outlet>

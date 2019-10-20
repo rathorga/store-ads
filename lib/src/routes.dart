@@ -3,6 +3,7 @@ import 'package:angular_router/angular_router.dart';
 import 'store/store_component.template.dart' as store_template;
 import 'admin/admin_component.template.dart' as admin_template;
 import 'setup/setup_component.template.dart' as setup_template;
+
 import 'route_paths.dart';
 
 class Routes {
@@ -22,9 +23,15 @@ class Routes {
     component: setup_template.SetupComponentNgFactory,
   );
 
+  static final setupWithId = RouteDefinition(
+    routePath: RoutePaths.setupWithId,
+    component: setup_template.SetupComponentNgFactory,
+  );
+
   static final all = <RouteDefinition>[
     store,
     admin,
     setup,
+    setupWithId,
   ];
 }

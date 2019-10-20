@@ -10,3 +10,6 @@ final InjectorFactory injector = self.injector$Injector;
 void main() {
   runApp(ng.AppComponentNgFactory, createInjector: injector);
 }
+
+//routerProviders
+//routerProvidersHash

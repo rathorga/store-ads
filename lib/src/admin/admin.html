@@ -1,41 +1,78 @@
+<!--Sidebar start -->
 <material-drawer temporary #drawer="drawer"
                  [class.custom-width]="customWidth"
                  [attr.end]="end ? '' : null"
                  [attr.overlay]="overlay ? '' : null">
-    <div *deferredContent>
-        Here is some drawer content.
+    <!-- Sidebar content start -->
+  <material-list *deferredContent>
+    <div group class="mat-drawer-spacer"></div>
+    <div group>
+      <material-list-item [routerLink]="RoutePaths.admin.toUrl()"
+                          [routerLinkActive]="'active-route'">
+        <material-icon icon="star"></material-icon>Admin
+      </material-list-item>
+      <material-list-item [routerLink]="RoutePaths.store.toUrl()"
+                          [routerLinkActive]="'active-route'">
+        <material-icon icon="storefront"></material-icon>Store
+      </material-list-item>
+      <material-list-item [routerLink]="RoutePaths.setup.toUrl()"
+                          [routerLinkActive]="'active-route'">
+        <material-icon icon="settings"></material-icon>Setup
+      </material-list-item>
     </div>
-</material-drawer>
-<div class="material-content">
-    <header class="material-header shadow">
-        <div class="material-header-row">
-            <material-button class="material-drawer-button" icon (trigger)="drawer.toggle()">
-                <material-icon icon="menu"></material-icon>
-            </material-button>
-            <span class="material-header-title">Mobile Layout</span>
-            <div class="material-spacer"></div>
-            <nav class="material-navigation">
-                <a>Link 1</a>
-            </nav>
-            <nav class="material-navigation">
-                <a>Link 2</a>
-            </nav>
-            <nav class="material-navigation">
-                <a>Link 3</a>
-            </nav>
-        </div>
-    </header>
-</div>
+  </material-list><!-- Sidebar content end -->
+</material-drawer><!--Sidebar start end -->
 
-<div style="width: 70%;margin: 0 auto;margin-top: 6%;">
-    <div class="demo-card__primary">
-        <h2 class="demo-card__title">Store admin</h2>
-        <h3 class="demo-card__subtitle">Please enter admin details</h3>
+<!-- Top right navigation start -->
+<div class="material-content">
+  <header class="material-header shadow">
+    <div class="material-header-row">
+      <material-button class="material-drawer-button" icon (trigger)="drawer.toggle()">
+        <material-icon icon="menu"></material-icon>
+      </material-button>
+      <span class="material-header-title">Welcome `Admin name`</span>
+      <div class="material-spacer"></div>
+      <nav class="material-navigation">
+        <a>Store 1</a>
+      </nav>
+      <nav class="material-navigation">
+        <a>Store 2</a>
+      </nav>
+      <nav class="material-navigation">
+        <a>Store 3</a>
+      </nav>
     </div>
-    <div style="display: flex; flex-direction: column;">
-        <material-input style="width: 25%;" label="Store" type="text"></material-input>
-        <material-input style="width: 25%;" label="Location" type="text"></material-input>
-        <material-input style="width: 25%;" label="City" type="text"></material-input>
-    </div>
-</div>
+  </header>
+</div><!-- Top right navigation end -->
+
+<!-- Main content card -->
+<div class="base-card">
+  <div class="demo-card__primary">
+    <h2 class="demo-card__title">Store admin</h2>
+    <h3 class="demo-card__subtitle">Please store details</h3>
+  </div>
+  <!-- Admin form start -->
+  <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+    <div class="admin-form">
+      <material-input label="Store"
+                      type="text"
+                      [ngFormControl]='storeControl'
+                      [(ngModel)]='storeName'>
+      </material-input>
+      <material-input label="Location"
+                      type="text"
+                      [ngFormControl]='locationControl'
+                      [(ngModel)]='locationName'>
+      </material-input>
+      <material-input label="City"
+                      type="text"
+                      [ngFormControl]='cityControl'
+                      [(ngModel)]='city'>
+      </material-input>
+      <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div><!-- Admin form end -->
+  </form>
+</div><!--Main content end -->
 
