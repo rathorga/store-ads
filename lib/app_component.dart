@@ -2,7 +2,7 @@ import 'package:angular/angular.dart';
 import 'package:angular_app/src/route_paths.dart';
 import 'package:angular_router/angular_router.dart';
 
-import 'src/services/store_service.dart';
+import 'src/services/display_ads_service.dart';
 import 'src/routes.dart';
 
 @Component(
@@ -12,6 +12,6 @@ import 'src/routes.dart';
     ],
     templateUrl: 'app_component.html',
     exports: [RoutePaths, Routes],
-  providers: [ClassProvider(StoreService)],
+  providers: [ClassProvider(DisplayAdsService)],
 )
 class AppComponent {}

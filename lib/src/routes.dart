@@ -1,15 +1,15 @@
 import 'package:angular_router/angular_router.dart';
 
-import 'store/store_component.template.dart' as store_template;
+import 'display_ads/display_ads_component.template.dart' as display_ads_template;
 import 'admin/admin_component.template.dart' as admin_template;
 import 'setup/setup_component.template.dart' as setup_template;
 
 import 'route_paths.dart';
 
 class Routes {
-  static final store = RouteDefinition(
-    routePath: RoutePaths.store,
-    component: store_template.StoreComponentNgFactory,
+  static final displayAds = RouteDefinition(
+    routePath: RoutePaths.displayAds,
+    component: display_ads_template.DisplayAdsComponentNgFactory,
     useAsDefault: true,
   );
 
@@ -29,7 +29,7 @@ class Routes {
   );
 
   static final all = <RouteDefinition>[
-    store,
+    displayAds,
     admin,
     setup,
     setupWithId,

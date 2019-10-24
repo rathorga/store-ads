@@ -1,21 +1,21 @@
 import 'dart:html';
 
 import 'package:angular/angular.dart';
-import '../services/store_service.dart';
+import '../services/display_ads_service.dart';
 import 'package:angular_router/angular_router.dart';
 import '../../constants.dart' as constants;
 
 
 @Component(
-  selector: 'store',
-  styleUrls: ['store.css'],
-  templateUrl: 'store.html',
+  selector: 'display-ads',
+  styleUrls: ['display_ads.css'],
+  templateUrl: 'display_ads.html',
 )
-class StoreComponent implements OnInit{
+class DisplayAdsComponent implements OnInit {
   String imageToDisplay = '';
-  final StoreService _storeService;
+  final DisplayAdsService _displayAdsService;
   final Router _router;
-  StoreComponent(this._storeService, this._router);
+  DisplayAdsComponent(this._displayAdsService, this._router);
 
   ngOnInit() {
     this.getMediaPlayPlanId();
@@ -25,7 +25,7 @@ class StoreComponent implements OnInit{
     return window.localStorage[constants.PLAY_PLAN_LOCAL_STORAGE_KEY];
   }
 
-  getMediaPlayPlanId() async {
+  getMediaPlayPlanId() {
     String media_play_plan_id = getMediaPlayPlanIdFromLocalStorage();
     if(media_play_plan_id == null) {
       // ONLY FOR DEMO: Media play plan id not found on device.
@@ -33,25 +33,28 @@ class StoreComponent implements OnInit{
       this._router.navigate('/setup');
     } else {
       try {
-        // Get store config from Firebase DB.
-        var result = await this._storeService.getDataFromFireStore(
-            media_play_plan_id);
-        result.then(onFirebaseQuerySuccess);
-      } catch (e) {
-        onFirebaseQueryError(e);
+        this._displayAdsService.getDataFromFireStore(media_play_plan_id).then(
+            this.onFirebaseQuerySuccess);
+      } catch(e) {
+        this.onFirebaseQueryError(e);
       }
     }
   }
 
   /**
    * Checks whether a media play plan id is found. If found show the image on
-   * store view, else display default image.
+   * displayAds view, else display default image.
    */
   onFirebaseQuerySuccess (querySnapshot) {
+    var supportedMedia;
     querySnapshot.forEach((doc) => {
-      print(doc.data()),
-      if(doc.data().default_media_url != null) {
-        imageToDisplay = doc.data().default_media_url
+      if(doc.data() != null) {
+        supportedMedia = doc.data()['media'],
+        if (supportedMedia.length != 0) {
+          imageToDisplay = supportedMedia[0]['media_url']
+        } else {
+          imageToDisplay = supportedMedia['default_media_url']
+        }
       } else {
         imageToDisplay = constants.DEFAULT_URL
       }
