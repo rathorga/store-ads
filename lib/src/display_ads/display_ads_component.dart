@@ -1,19 +1,19 @@
 import 'dart:html';
 
 import 'package:angular/angular.dart';
-import '../services/store_service.dart';
+import '../services/display_ads_service.dart';
 import 'package:angular_router/angular_router.dart';
 import '../../constants.dart' as constants;
 
 
 @Component(
-  selector: 'store',
-  styleUrls: ['store.css'],
-  templateUrl: 'store.html',
+  selector: 'display-ads',
+  styleUrls: ['display_ads.css'],
+  templateUrl: 'display_ads.html',
 )
-class StoreComponent implements OnInit{
+class DisplayAdsComponent implements OnInit {
   String imageToDisplay = '';
-  final StoreService _storeService;
+  final DisplayAdsService _displayAdsService;
   final Router _router;
   var activePlans = [];
   var activeMedia = [];
@@ -28,7 +28,7 @@ class StoreComponent implements OnInit{
     return window.localStorage[constants.PLAY_PLAN_LOCAL_STORAGE_KEY];
   }
 
-  getMediaPlayPlanId() async {
+  getMediaPlayPlanId() {
     String media_play_plan_id = getMediaPlayPlanIdFromLocalStorage();
     if(media_play_plan_id == null) {
       // ONLY FOR DEMO: Media play plan id not found on device.
